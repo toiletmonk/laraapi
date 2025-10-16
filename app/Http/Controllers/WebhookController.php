@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\WebhookService;
+use App\Services\WebhookService;
 use Illuminate\Http\Request;
 
 class WebhookController extends Controller

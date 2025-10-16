@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\CartService;
 use App\Http\Requests\AddToCartRequest;
 use App\Models\CartItem;
 use App\Models\Post;
+use App\Services\CartService;
 use Illuminate\Http\Request;
 
 class CartController extends Controller

@@ -1,10 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Services;
 
 use App\Models\CartItem;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 
 class CartService
 {

@@ -1,8 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Services;
 
 use App\Models\User;
+
 class AuthService
 {
     protected RegisterUserAction $registerAction;

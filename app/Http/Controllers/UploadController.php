@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UploadRequest;
-use App\UploadService;
-use Illuminate\Http\Request;
+use App\Services\UploadService;
 
 class UploadController extends Controller
 {

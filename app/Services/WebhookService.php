@@ -1,15 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Services;
 
 use App\Jobs\ProcessStripeWebhook;
-use App\Models\CartItem;
-use App\Models\Order;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
-use Stripe\Checkout\Session;
 use Stripe\Webhook;
 
 class WebhookService

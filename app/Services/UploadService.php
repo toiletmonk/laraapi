@@ -1,8 +1,7 @@
 <?php
 
-namespace App;
+namespace App\Services;
 use App\Jobs\Upload;
-use App\Models\File;
 use Illuminate\Support\Facades\Storage;
 
 class UploadService

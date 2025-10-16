@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Requests\SendResetLinkRequest;
-use App\PasswordResetService;
-use Illuminate\Http\Request;
+use App\Services\PasswordResetService;
 
 class PasswordResetController extends Controller
 {

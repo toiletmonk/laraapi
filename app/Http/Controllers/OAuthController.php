@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 
-use App\OAuthService;
+use App\Services\OAuthService;
 use Illuminate\Http\Request;
+
 class OAuthController extends Controller
 {
     protected OAuthService $oauthService;

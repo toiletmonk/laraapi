@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\AuthService;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Services\AuthService;
 
 class AuthController extends Controller
 {

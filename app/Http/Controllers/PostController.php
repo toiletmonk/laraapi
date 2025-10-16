@@ -7,8 +7,7 @@ use App\Http\Requests\PostIndexRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
-use App\PostService;
-use Illuminate\Http\Request;
+use App\Services\PostService;
 
 class PostController extends Controller
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Services;
 
 use App\Models\User;
-use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Contracts\User as ProviderUser;
+use Laravel\Socialite\Facades\Socialite;
 
 class OAuthService
 {

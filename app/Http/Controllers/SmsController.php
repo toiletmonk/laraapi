@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TwilioRequest;
 use App\Jobs\SendVerificationSms;
-use App\TwilioService;
-use Illuminate\Http\Request;
+use App\Services\TwilioService;
 use Illuminate\Support\Facades\Cache;
 
 class SmsController extends Controller

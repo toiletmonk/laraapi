@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\CartService;
-use App\PaymentService;
+use App\Services\CartService;
+use App\Services\PaymentService;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
