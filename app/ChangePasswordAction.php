@@ -29,7 +29,6 @@ class ChangePasswordAction
 
         if ($saved) {
             $user->tokens()->delete();
-            $this->audit->log($user->id, 'change_password');
         }
 
         return $saved;
