@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class PostResource extends JsonResource
 {
@@ -17,7 +18,7 @@ class PostResource extends JsonResource
         return [
             'id'=>$this->id,
             'title'=>$this->title,
-            'excerpt'=>substr($this->content, 0, 100),
+            'excerpt'=>Str::limit($this->content, 100),
             'category_id'=>$this->category_id,
             'price'=>$this->price
         ];

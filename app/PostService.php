@@ -9,21 +9,13 @@ class PostService
 {
     public function getFilteredPosts(array $filters): LengthAwarePaginator
     {
-        $results = Post::search($filters['search'] ?? '')
-            ->when(!empty($filters['category_id']), function ($query) use ($filters) {
-                $query->where('category_id', $filters['category_id']);
-            })
-            ->when(!empty($filters['min_price']), function ($query) use ($filters) {
-                $query->where('price', '>=', $filters['min_price']);
-            })
-            ->when(!empty($filters['max_price']), function ($query) use ($filters) {
-                $query->where('price', '<=', $filters['max_price']);
-            })
-            ->when(!empty($filters['sort_by']), function ($query) use ($filters) {
-                $query->orderBy($filters['sort_by'], $filters['sort_direction']);
-            })
-            ->paginate();
+        $query = Post::search($filters['search'] ?? '')
+            ->filter($filters);
 
-        return $results;
+        if (!empty($filters['sort_by'])) {
+            $query->orderBy($filters['sort_by'], $filters['sort_direction'] ?? 'asc');
+        }
+
+        return $query->paginate($filters['per_page'] ?? 10);
     }
 }

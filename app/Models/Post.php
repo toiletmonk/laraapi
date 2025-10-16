@@ -26,4 +26,12 @@ class Post extends Model
             'stripe_price_id' => $this->stripe_price_id ?? null,
         ];
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        return $query
+            ->when($filters['category_id'] ?? null, fn($q, $v) => $q->where('category_id', $v))
+            ->when($filters['min_price'] ?? null, fn($q, $v) => $q->where('price', '>=', $v))
+            ->when($filters['max_price'] ?? null, fn($q, $v) => $q->where('price', '<=', $v));
+    }
 }
