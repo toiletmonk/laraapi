@@ -1,0 +1,20 @@
+{
+    "id": "evt_test_checkout_session_failed",
+    "object": "event",
+    "api_version": "2022-11-15",
+    "created": 1696000000,
+    "data": {
+        "object": {
+            "id": "cs_test_failed_session",
+            "object": "checkout.session",
+            "payment_status": "unpaid",
+            "metadata": {
+                "user_id": "123"
+            },
+            "amount_total": 2000,
+            "currency": "usd"
+        }
+    },
+    "livemode": false,
+    "type": "checkout.session.failed"
+}
