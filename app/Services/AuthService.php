@@ -2,6 +2,10 @@
 
 namespace App\Services;
 
+use App\Actions\ChangePasswordAction;
+use App\Actions\LoginUserAction;
+use App\Actions\LogoutUserAction;
+use App\Actions\RegisterUserAction;
 use App\Models\User;
 
 class AuthService

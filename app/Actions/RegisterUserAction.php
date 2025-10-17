@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Actions;
 
 use App\Exceptions\AuthException;
 use App\Models\User;
+use App\Services\AuditService;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 

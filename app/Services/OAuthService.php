@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\InvalidProviderException;
 use App\Models\User;
 use Laravel\Socialite\Contracts\User as ProviderUser;
 use Laravel\Socialite\Facades\Socialite;
@@ -13,7 +14,7 @@ class OAuthService
     public function redirect($provider)
     {
         if (!in_array($provider, $this->providers)) {
-            throw new \Exception('Invalid provider');
+            throw new InvalidProviderException($provider);
         }
         return Socialite::driver($provider)->stateless()->redirect();
     }
@@ -21,7 +22,7 @@ class OAuthService
     public function callback($provider): array
     {
         if (!in_array($provider, $this->providers)) {
-            throw new \Exception('Invalid provider');
+            throw new InvalidProviderException($provider);
         }
         $providerUser = Socialite::driver($provider)->stateless()->user();
         $user = $this->findOrCreateUser($providerUser, $provider);

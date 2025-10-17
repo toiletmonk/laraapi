@@ -6,10 +6,6 @@ use App\Models\CartItem;
 
 class CartService
 {
-    protected function getCacheKey($user): string
-    {
-        return "cart_items_user_{$user->id}";
-    }
     public function addToCart($postId, $quantity)
     {
         $user = auth()->user();
@@ -47,9 +43,7 @@ class CartService
     public function getAllCartItems()
     {
         $user = auth()->user();
-        $cacheKey = $this->getCacheKey($user);
 
         return CartItem::with('post')->where('user_id', $user->id)->get();
-
     }
 }
