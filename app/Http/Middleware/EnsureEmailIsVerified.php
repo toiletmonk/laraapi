@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckTokenExpiration
+class EnsureEmailIsVerified
 {
     /**
      * Handle an incoming request.
@@ -17,15 +17,8 @@ class CheckTokenExpiration
     {
         $user = $request->user();
 
-        if (!$user || !$request->user()?->currentAccessToken()) {
-            return $next($request);
-        }
-
-        $token = $user?->currentAccessToken();
-
-        if ($token->expires_at && $token->expires_at->isPast()) {
-            $token->delete();
-            return response()->json(['message'=>'Token expired'], Response::HTTP_UNAUTHORIZED);
+        if (!$user || !$user->hasVerifiedEmail()) {
+            return response()->json(['message'=>'Please verify your email address.'], 403);
         }
         return $next($request);
     }

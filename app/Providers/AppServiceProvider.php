@@ -4,6 +4,8 @@ namespace App\Providers;
 
 
 use App\Http\Middleware\CheckTokenExpiration;
+use App\Http\Middleware\EnsureEmailIsVerified;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -33,7 +35,5 @@ class AppServiceProvider extends ServiceProvider
                 ? Limit::perMinute(60)->by($request->user()->id())
                 : Limit::perMinute(10)->by($request->ip());
         });
-        $kernel = $this->app->make(\Illuminate\Contracts\Http\Kernel::class);
-        $kernel->appendMiddlewareToGroup('api', CheckTokenExpiration::class);
     }
 }
