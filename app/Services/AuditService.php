@@ -7,7 +7,7 @@ use App\Models\AuditLog;
 class AuditService
 {
 
-    public function log(?int $userId, string $event, array $metadata = []): AuditLog
+    public function log(?int $userId, ?string $event, array $metadata = []): AuditLog
     {
         return AuditLog::create([
             'user_id' => $userId,

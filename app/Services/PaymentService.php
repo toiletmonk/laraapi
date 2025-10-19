@@ -3,6 +3,7 @@
 namespace App\Services;
 
 
+use App\Models\Payment;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
 
@@ -22,6 +23,7 @@ class PaymentService
             'payment_method_types' => ['card'],
             'metadata' => array_merge($metadata, ['user_id' => $userId]),
         ]);
+
     }
 
     public function calculateAmount($cartItems): int

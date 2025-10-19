@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('provider');
+            $table->string('payment_id')->unique();
+            $table->decimal('amount', 10, 2);
+            $table->string('currency');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }
