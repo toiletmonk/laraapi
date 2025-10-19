@@ -14,15 +14,4 @@ class Product extends Model
         'price',
         'stripe_price_id'
     ];
-
-    public function toArrayForFrontend(): array
-    {
-        return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'description' => $this->description,
-            'price' => $this->price,
-            'stripe_price_id' => $this->stripe_price_id,
-        ];
-    }
 }

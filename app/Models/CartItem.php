@@ -23,13 +23,4 @@ class CartItem extends Model
     {
         return $this->post->price * $this->quantity;
     }
-
-    public function toStripeArray(): array
-    {
-        return [
-            'price' => $this->post->stripe_price_id,
-            'quantity' => $this->quantity,
-        ];
-    }
-
 }
