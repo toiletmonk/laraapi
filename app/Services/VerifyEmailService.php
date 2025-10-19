@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\SendVerificationMail;
 use App\Jobs\SendWelcomeEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;

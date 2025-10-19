@@ -32,22 +32,4 @@ class CartItem extends Model
         ];
     }
 
-    /**
-     * Simplified array for frontend JSON.
-     */
-    public function toArrayForFrontend(): array
-{
-    return [
-        'id' => $this->id,
-        'quantity' => $this->quantity,
-        'post' => [
-            'id' => $this->post->id,
-            'name' => $this->post->title,
-            'description' => $this->post->description,
-            'price' => $this->post->price,
-            'stripe_price_id' => $this->post->stripe_price_id,
-        ],
-        'total' => $this->total(),
-    ];
-}
 }

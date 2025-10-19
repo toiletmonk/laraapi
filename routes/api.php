@@ -11,8 +11,18 @@ use App\Http\Controllers\SmsController;
 use App\Http\Controllers\OAuthController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\WebhookController;
+use App\Mail\TestSandboxMail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/test-mail', function () {
+    $recipient = 'dispatchwarriors076@gmail.com'; // verifikovana sandbox adresa
+
+    Mail::to($recipient)->queue(new VerificationMail($recipient));
+
+    return 'Mail queued successfully!';
+});
 
 Route::middleware('throttle:auth')->group(function () {
     Route::post('register', [AuthController::class, 'register']);
@@ -31,7 +41,7 @@ Route::middleware('throttle:5,1')->group(function () {
 
 Route::middleware(['auth:sanctum', 'check.expiration', 'throttle:checkout', 'verified.email'])->group(function () {
 
-    Route::get('/email/verify/{id}/{hash}', [\App\Http\Controllers\VerificationController::class, 'verify'])->name('verification.verify');
+    Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
     Route::delete('logout', [AuthController::class, 'logout']);
     Route::put('change-password', [AuthController::class, 'changePassword']);
     Route::apiResource('posts', PostController::class);
