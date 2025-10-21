@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 
 class Upload implements ShouldQueue
 {
-    use Queueable, Dispatchable, InteractsWithQueue, SerializesModels;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * Create a new job instance.
@@ -29,9 +29,9 @@ class Upload implements ShouldQueue
         $path = $this->file->store('files', 'public');
 
         $fileModel = new File([
-            'filename'=>$this->file->getClientOriginalName(),
-            'filetype'=>$this->file->getClientOriginalExtension(),
-            'filepath'=>$path,
+            'filename' => $this->file->getClientOriginalName(),
+            'filetype' => $this->file->getClientOriginalExtension(),
+            'filepath' => $path,
         ]);
 
         $fileModel->save();

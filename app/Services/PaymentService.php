@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-
-use App\Models\Payment;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
 

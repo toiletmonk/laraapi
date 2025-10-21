@@ -31,7 +31,7 @@ class PostController extends Controller
         $post = Post::create($data);
 
         return response()->json([
-            'post' => $post
+            'post' => $post,
         ], 201);
     }
 
@@ -39,7 +39,7 @@ class PostController extends Controller
     {
         $post->update($request->validated());
 
-        return response()->json(['message'=>'Updated succesfully'], 200);
+        return response()->json(['message' => 'Updated succesfully'], 200);
     }
 
     public function destroy(Post $post)
@@ -51,6 +51,6 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return response()->json(['post'=>$post]);
+        return response()->json(['post' => $post]);
     }
 }

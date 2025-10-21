@@ -11,16 +11,17 @@ class CartService
         $user = auth()->user();
         $cartItem = CartItem::where('user_id', $user->id)->where('post_id', $postId)->first();
 
-        if (!$cartItem) {
+        if (! $cartItem) {
             $cartItem = new CartItem([
-                'user_id'=>$user->id,
-                'post_id'=>$postId,
-                'quantity'=>$quantity,
+                'user_id' => $user->id,
+                'post_id' => $postId,
+                'quantity' => $quantity,
             ]);
         } else {
             $cartItem->quantity += $quantity;
         }
         $cartItem->save();
+
         return $cartItem;
     }
 
@@ -28,7 +29,7 @@ class CartService
     {
         $user = auth()->user();
         $cartItem = CartItem::where('user_id', $user->id)->where('post_id', $postId)->first();
-        if (!$cartItem) {
+        if (! $cartItem) {
             return null;
         }
         $cartItem->quantity -= $quantity;
@@ -37,6 +38,7 @@ class CartService
         }
 
         $cartItem->save();
+
         return $cartItem;
     }
 

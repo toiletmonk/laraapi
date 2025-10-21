@@ -8,12 +8,12 @@ class AuthException extends Exception
 {
     protected string $type;
 
-    public function __construct(string $type, string $message = null)
+    public function __construct(string $type, ?string $message = null)
     {
         $this->type = $type;
 
-        if (!$message) {
-            $message = match($type) {
+        if (! $message) {
+            $message = match ($type) {
                 'phone' => 'Phone number is not verified.',
                 'email' => 'Email address is not verified.',
                 'credentials' => 'Invalid email or password.',

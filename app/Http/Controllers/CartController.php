@@ -21,7 +21,7 @@ class CartController extends Controller
     {
         $cartItems = $this->cartService->getAllCartItems();
 
-        $data = $cartItems->map(fn($item) => $item->toArrayForFrontend());
+        $data = $cartItems->map(fn ($item) => $item->toArrayForFrontend());
 
         return response()->json($data, 200);
     }
@@ -47,7 +47,7 @@ class CartController extends Controller
 
     public function getTotalAmount()
     {
-        return $this->getAllCartItems()->sum(fn($item) => $item->post->price * $item->quantity);
+        return $this->getAllCartItems()->sum(fn ($item) => $item->post->price * $item->quantity);
     }
 
     public function clearAllCartItems(Request $request)
@@ -56,6 +56,6 @@ class CartController extends Controller
 
         CartItem::query()->where('user_id', $user->id)->delete();
 
-        return response()->json(['message'=>'Cart cleared'], 200);
+        return response()->json(['message' => 'Cart cleared'], 200);
     }
 }

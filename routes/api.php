@@ -1,18 +1,15 @@
 <?php
 
-
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\OAuthController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SmsController;
-use App\Http\Controllers\OAuthController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\WebhookController;
-use App\Mail\TestSandboxMail;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 

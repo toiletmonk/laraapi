@@ -20,7 +20,7 @@ class PasswordResetService
             function (User $user, $password) {
                 $user->password = Hash::make($password);
                 $user->save();
-        }
+            }
         );
     }
 }

@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 class CheckoutController extends Controller
 {
     protected PaymentService $checkoutService;
+
     protected CartService $cartService;
+
     protected StoreTransaction $storeTransaction;
 
     public function __construct(PaymentService $checkoutService, CartService $cartService, StoreTransaction $storeTransaction)
@@ -26,7 +28,7 @@ class CheckoutController extends Controller
         $cartItems = $this->cartService->getAllCartItems($user->id);
 
         if (empty($cartItems)) {
-            return response()->json(['status'=>'Cart is empty']);
+            return response()->json(['status' => 'Cart is empty']);
         }
         $amount = $this->checkoutService->calculateAmount($cartItems);
 
@@ -38,6 +40,6 @@ class CheckoutController extends Controller
 
         $this->storeTransaction->saveTransactionToDB($user->id, $paymentIntent);
 
-        return response()->json(['client-secret'=>$paymentIntent->client_secret]);
+        return response()->json(['client-secret' => $paymentIntent->client_secret]);
     }
 }

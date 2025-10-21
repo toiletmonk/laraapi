@@ -22,6 +22,7 @@ class WebhookService
             abort(400);
         }
         ProcessStripeWebhook::dispatch($event);
-        return response()->json(['status'=>'Queued']);
+
+        return response()->json(['status' => 'Queued']);
     }
 }

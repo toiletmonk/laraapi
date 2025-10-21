@@ -11,11 +11,11 @@ class AuditLog extends Model
         'event',
         'ip',
         'user_agent',
-        'metadata'
+        'metadata',
     ];
 
     protected $casts = [
-        'metadata' => 'array'
+        'metadata' => 'array',
     ];
 
     public function user()

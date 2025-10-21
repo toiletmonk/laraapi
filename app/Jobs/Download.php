@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Download implements ShouldQueue
 {
-    use Queueable, Dispatchable, SerializesModels, InteractsWithQueue;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * Create a new job instance.

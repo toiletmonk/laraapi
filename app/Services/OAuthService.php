@@ -13,15 +13,16 @@ class OAuthService
 
     public function redirect($provider)
     {
-        if (!in_array($provider, $this->providers)) {
+        if (! in_array($provider, $this->providers)) {
             throw new InvalidProviderException($provider);
         }
+
         return Socialite::driver($provider)->stateless()->redirect();
     }
 
     public function callback($provider): array
     {
-        if (!in_array($provider, $this->providers)) {
+        if (! in_array($provider, $this->providers)) {
             throw new InvalidProviderException($provider);
         }
         $providerUser = Socialite::driver($provider)->stateless()->user();
@@ -36,7 +37,8 @@ class OAuthService
 
     protected function findOrCreateUser(ProviderUser $providerUser, string $provider)
     {
-        $providerIDField = $provider . '_id';
+        $providerIDField = $provider.'_id';
+
         return User::updateOrCreate(
             ['email' => $providerUser->getEmail()],
             [

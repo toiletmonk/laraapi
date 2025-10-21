@@ -15,21 +15,22 @@ use Illuminate\Support\Facades\Validator;
 
 class ProcessStripeWebhook implements ShouldQueue
 {
-    use Queueable, Dispatchable, SerializesModels, InteractsWithQueue;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $event;
+
     public function __construct($event)
     {
         $this->event = $event;
     }
 
-    public function handle():void
+    public function handle(): void
     {
         switch ($this->event->type) {
             case 'payment_intent.payment_succeeded':
                 $paymentIntent = $this->event->data->object;
                 $userId = $paymentIntent->metadata->user->id ?? null;
-                if (!$userId || !User::where('id', $userId)->exists()) {
+                if (! $userId || ! User::where('id', $userId)->exists()) {
                     Log::warning("Payment intent for not existing user: {$userId}");
                 }
                 $data = [
@@ -39,13 +40,14 @@ class ProcessStripeWebhook implements ShouldQueue
                     'user_id' => $userId,
                 ];
                 $validator = Validator::make($data, [
-                    'payment_status'=>'required|in:succeeded,failed,processing',
-                    'total_amount'=>'required|numeric|min:10',
-                    'currency'=>'required|in:usd,eur',
-                    'user_id'=>'required|exists:users,id',
+                    'payment_status' => 'required|in:succeeded,failed,processing',
+                    'total_amount' => 'required|numeric|min:10',
+                    'currency' => 'required|in:usd,eur',
+                    'user_id' => 'required|exists:users,id',
                 ]);
                 if ($validator->fails()) {
                     Log::error($validator->errors());
+
                     return;
                 }
 

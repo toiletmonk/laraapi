@@ -12,7 +12,7 @@ class PostService
         $query = Post::search($filters['search'] ?? '')
             ->filter($filters);
 
-        if (!empty($filters['sort_by'])) {
+        if (! empty($filters['sort_by'])) {
             $query->orderBy($filters['sort_by'], $filters['sort_direction'] ?? 'asc');
         }
 

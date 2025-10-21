@@ -11,10 +11,12 @@ use Illuminate\Queue\SerializesModels;
 
 class SendVerificationSms implements ShouldQueue
 {
-    use Queueable, Dispatchable, InteractsWithQueue, SerializesModels;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $phone;
+
     protected $code;
+
     public function __construct(string $phone, string $code)
     {
         $this->phone = $phone;

@@ -11,7 +11,6 @@ class AuthController extends Controller
 {
     protected AuthService $authService;
 
-
     public function __construct(AuthService $authService)
     {
         $this->authService = $authService;
@@ -21,7 +20,7 @@ class AuthController extends Controller
     {
         $user = $this->authService->register($request->validated());
 
-        return response()->json(['user'=>$user]);
+        return response()->json(['user' => $user]);
     }
 
     public function login(LoginRequest $request)
@@ -37,6 +36,7 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Successfully logged out']);
     }
+
     public function changePassword(ChangePasswordRequest $request)
     {
         $success = $this->authService->changePassword($request->validated());

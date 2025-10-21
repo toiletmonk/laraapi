@@ -2,10 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Models\File;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
@@ -20,9 +18,9 @@ class UploadControllerTest extends TestCase
         Sanctum::actingAs($user);
 
         $response = $this->postJson('/api/upload', [
-            'filename'=>'text',
-            'filetype'=>'image/jpeg',
-            'filesize'=>3400
+            'filename' => 'text',
+            'filetype' => 'image/jpeg',
+            'filesize' => 3400,
         ]);
 
         $response->assertStatus(422);
@@ -36,7 +34,7 @@ class UploadControllerTest extends TestCase
         $file = UploadedFile::fake()->image('image.jpg');
 
         $response = $this->postJson('/api/upload', [
-            'file'=>$file,
+            'file' => $file,
         ]);
 
         $response->assertStatus(201);
@@ -50,7 +48,7 @@ class UploadControllerTest extends TestCase
         $file = UploadedFile::fake()->image('image.jpg');
 
         $uploadedFile = $this->postJson('/api/upload', [
-            'file'=>$file,
+            'file' => $file,
         ]);
 
         $fileId = $uploadedFile->json('id');

@@ -22,9 +22,9 @@ class PostIndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id'=>'sometimes|required|integer|exists:categories,id',
-            'search'=>'sometimes|required|string|max:255',
-            'page'=>'sometimes|required|integer|min:1',
+            'category_id' => 'sometimes|required|integer|exists:categories,id',
+            'search' => 'sometimes|required|string|max:255',
+            'page' => 'sometimes|required|integer|min:1',
         ];
     }
 }

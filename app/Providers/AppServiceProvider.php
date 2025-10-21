@@ -2,15 +2,10 @@
 
 namespace App\Providers;
 
-
-use App\Http\Middleware\CheckTokenExpiration;
-use App\Http\Middleware\EnsureEmailIsVerified;
-use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
-use Termwind\Components\Li;
 
 class AppServiceProvider extends ServiceProvider
 {

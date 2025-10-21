@@ -14,6 +14,7 @@ class TestSandboxMail extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
 
     public $email;
+
     public function __construct($email)
     {
         $this->email = $email;

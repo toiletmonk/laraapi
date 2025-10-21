@@ -9,11 +9,12 @@ use Laravel\Scout\Searchable;
 class Post extends Model
 {
     use HasFactory, Searchable;
+
     protected $fillable = [
         'title',
         'content',
         'price',
-        'stripe_price_id'
+        'stripe_price_id',
     ];
 
     public function toArrayForCart(): array
@@ -30,8 +31,8 @@ class Post extends Model
     public function scopeFilter($query, array $filters)
     {
         return $query
-            ->when($filters['category_id'] ?? null, fn($q, $v) => $q->where('category_id', $v))
-            ->when($filters['min_price'] ?? null, fn($q, $v) => $q->where('price', '>=', $v))
-            ->when($filters['max_price'] ?? null, fn($q, $v) => $q->where('price', '<=', $v));
+            ->when($filters['category_id'] ?? null, fn ($q, $v) => $q->where('category_id', $v))
+            ->when($filters['min_price'] ?? null, fn ($q, $v) => $q->where('price', '>=', $v))
+            ->when($filters['max_price'] ?? null, fn ($q, $v) => $q->where('price', '<=', $v));
     }
 }

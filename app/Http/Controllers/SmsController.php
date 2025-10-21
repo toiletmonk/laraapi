@@ -28,6 +28,6 @@ class SmsController extends Controller
 
         SendVerificationSms::dispatch($phone, $code);
 
-        return response()->json(['status'=>'Message sent successfully.']);
+        return response()->json(['status' => 'Message sent successfully.']);
     }
 }

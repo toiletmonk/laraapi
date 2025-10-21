@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class RegisterUserAction
 {
     protected AuditService $audit;
+
     public function __construct(AuditService $audit)
     {
         $this->audit = $audit;
@@ -19,7 +20,7 @@ class RegisterUserAction
     public function execute(array $data): User
     {
         $cachedCode = Cache::get("verify_{$data['phone']}");
-        if (!$cachedCode || $cachedCode != $data['phone_code']) {
+        if (! $cachedCode || $cachedCode != $data['phone_code']) {
             throw new AuthException('phone');
         }
 

@@ -27,7 +27,7 @@ class RegisterRequest extends FormRequest
             'name' => 'required|string|max:255',
             'password' => ['required|confirmed', Password::min(8)->letters()->mixedCase()->numbers()],
             'phone' => 'required|string|unique:users,phone',
-            'phone_code'=>'required|numeric',
+            'phone_code' => 'required|numeric',
         ];
     }
 }

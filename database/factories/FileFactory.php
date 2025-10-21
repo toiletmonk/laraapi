@@ -18,9 +18,9 @@ class FileFactory extends Factory
     public function definition(): array
     {
         return [
-            'filename'=>$this->faker->name(),
-            'filetype'=>$this->faker->mimeType(),
-            'filepath'=>'files/' . Str::random(10) . '.jpg',
+            'filename' => $this->faker->name(),
+            'filetype' => $this->faker->mimeType(),
+            'filepath' => 'files/'.Str::random(10).'.jpg',
         ];
     }
 }

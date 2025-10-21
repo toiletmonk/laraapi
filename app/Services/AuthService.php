@@ -11,8 +11,11 @@ use App\Models\User;
 class AuthService
 {
     protected RegisterUserAction $registerAction;
+
     protected LoginUserAction $loginAction;
+
     protected LogoutUserAction $logoutAction;
+
     protected ChangePasswordAction $changePasswordAction;
 
     public function __construct(
@@ -26,14 +29,17 @@ class AuthService
         $this->logoutAction = $logoutAction;
         $this->changePasswordAction = $changePasswordAction;
     }
+
     public function register(array $data): User
     {
         return $this->registerAction->execute($data);
     }
-    public function login(array $data): String
+
+    public function login(array $data): string
     {
         return $this->loginAction->execute($data);
     }
+
     public function logout(): void
     {
         $this->logoutAction->execute();

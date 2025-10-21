@@ -17,7 +17,7 @@ class CheckTokenExpiration
     {
         $user = $request->user();
 
-        if (!$user || !$request->user()?->currentAccessToken()) {
+        if (! $user || ! $request->user()?->currentAccessToken()) {
             return $next($request);
         }
 
@@ -25,8 +25,10 @@ class CheckTokenExpiration
 
         if ($token->expires_at && $token->expires_at->isPast()) {
             $token->delete();
-            return response()->json(['message'=>'Token expired'], Response::HTTP_UNAUTHORIZED);
+
+            return response()->json(['message' => 'Token expired'], Response::HTTP_UNAUTHORIZED);
         }
+
         return $next($request);
     }
 }

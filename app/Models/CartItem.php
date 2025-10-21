@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CartItem extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'user_id',
         'post_id',
@@ -22,5 +23,14 @@ class CartItem extends Model
     public function total(): float
     {
         return $this->post->price * $this->quantity;
+    }
+
+    public function toArrayForFrontend()
+    {
+        return [
+            'user_id' => $this->user_id,
+            'post_id' => $this->post_id,
+            'quantity' => $this->quantity,
+        ];
     }
 }

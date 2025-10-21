@@ -16,11 +16,11 @@ class PostResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'=>$this->id,
-            'title'=>$this->title,
-            'excerpt'=>Str::limit($this->content, 100),
-            'category_id'=>$this->category_id,
-            'price'=>$this->price
+            'id' => $this->id,
+            'title' => $this->title,
+            'excerpt' => Str::limit($this->content, 100),
+            'category_id' => $this->category_id,
+            'price' => $this->price,
         ];
     }
 }

@@ -15,7 +15,7 @@ class InvalidProviderException extends Exception
     {
         return response()->json([
             'error' => 'Invalid provider',
-            'message' => $this->getMessage()
+            'message' => $this->getMessage(),
         ]);
     }
 }
